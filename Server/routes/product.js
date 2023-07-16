@@ -4,7 +4,7 @@ const {
   deleteProduct,
   getProduct,
   getAllProducts,
-} = require('../Controllers/Project');
+} = require('../Controllers/Product');
 const {
   verifyToken,
   verifyTokenAndAuthorization,

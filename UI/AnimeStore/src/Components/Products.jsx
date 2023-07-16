@@ -4,9 +4,18 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Products = ({ cat, filters, sort }) => {
+  const filter = (arr, criteria) => {
+    return arr.filter(function (obj) {
+      return Object.keys(criteria).every(function (c) {
+        return new RegExp(criteria[c]).test(obj[c]);
+      });
+    });
+  };
+
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  //fetching all products
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -23,17 +32,11 @@ const Products = ({ cat, filters, sort }) => {
     getProducts();
   }, [cat]);
 
+  //filtering products
   useEffect(() => {
-    cat &&
-      setFilteredProducts(
-        products.filter((item) =>
-          Object.entries(filters).every(([key, value]) =>
-            item[key].includes(value)
-          )
-        )
-      );
+    cat && setFilteredProducts(filter(products, filters));
   }, [products, cat, filters]);
-
+  //sorting products
   useEffect(() => {
     if (sort === 'newest') {
       setFilteredProducts((prev) =>
