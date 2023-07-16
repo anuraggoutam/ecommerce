@@ -55,7 +55,7 @@ function Slider() {
   };
 
   return (
-    <div className=" h-[780px] w-screen -mt-8 py-8  relative group ">
+    <div className=" h-[780px] w-screen -mt-8 py-8  relative group smx:h-[880px]">
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
         className="w-full h-full  bg-center bg-cover duration-500 relative"

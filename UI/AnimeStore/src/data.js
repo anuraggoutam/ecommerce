@@ -38,7 +38,6 @@ export const categories = [
     img: 'https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=',
     title: 'LIGHT JACKETS',
   },
-  
 ];
 
 export const popularProducts = [
@@ -48,7 +47,7 @@ export const popularProducts = [
   },
   {
     id: 2,
-    img: 'https://cdn.shopify.com/s/files/1/0101/4832/products/Angela_Natural_Tee.png?v=1606780388',
+    img: 'https://i.stack.imgur.com/tINcy.png',
   },
   {
     id: 3,
@@ -56,7 +55,7 @@ export const popularProducts = [
   },
   {
     id: 4,
-    img: 'https://www.burdastyle.com/pub/media/catalog/product/cache/7bd3727382ce0a860b68816435d76e26/107/BUS-PAT-BURTE-1320516/1170x1470_BS_2016_05_132_front.png',
+    img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2016%2F12%2F06%2F09%2F30%2Fblank-1886001_960_720.png&f=1&nofb=1&ipt=96d09ba9e3ad7366730760808751a56580009a3dd763d47ed30a6248baed4154&ipo=images',
   },
   {
     id: 5,
@@ -68,7 +67,7 @@ export const popularProducts = [
   },
   {
     id: 7,
-    img: 'https://www.vintageindustries.nl/download_front/qympzk1762/2217_Arrow_Jacket_Forest.png',
+    img: 'https://purepng.com/public/uploads/large/purepng.com-women-dressclothingwomen-dressfashion-women-dress-cloth-apparel-631522326949yy7yw.png',
   },
   {
     id: 8,

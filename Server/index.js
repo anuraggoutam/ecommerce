@@ -25,6 +25,11 @@ app.use('/api/orders', orderRoute);
 app.use('/api/checkout', stripeRoute);
 app.use(errorHandler);
 
+const date = new Date();
+
+
+
 app.listen(process.env.PORT || 5000, () => {
   console.log('Backend server is running!');
+  console.log(date.toString());
 });
