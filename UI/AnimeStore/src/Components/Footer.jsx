@@ -9,7 +9,7 @@ const Footer = (props) => {
   return (
     <div className="con flex w-screen ">
       <div className="left flex-1 flex flex-col p-5 ">
-        <h1 className="LOGO">ANIMEVERSE</h1>
+        <h1 className="LOGO font-extrabold text-2xl">ANIMEVERSE</h1>
         <p className="desc my-5 mx-0 ">
           There are many variations of passages of Lorem Ipsum available, but
           the majority have suffered alteration in some form, by injected
@@ -31,7 +31,7 @@ const Footer = (props) => {
         </div>
       </div>
       <div className="center flex-1 p-5 smx:hidden">
-        <h3 className='mb-7'>Useful Links</h3>
+        <h3 className="mb-7 font-extrabold text-2xl">Useful Links</h3>
         <ul className="m-0 p-0 no-underline flex flex-wrap">
           <li className="w-1/2 mb-2">Home</li>
           <li className="w-1/2 mb-2">Cart</li>
@@ -44,7 +44,7 @@ const Footer = (props) => {
         </ul>
       </div>
       <div className="right flex-1 p-5 smx:bg-[#fff8f8]">
-        <div className="title">Contact</div>
+        <div className="title font-extrabold text-2xl">Contact</div>
         <div className="ContactItem mb-5 flex items-center"></div>
         <div className="ContactItem mb-5 flex items-center"></div>
         <div className="ContactItemmb-5 flex items-center"></div>

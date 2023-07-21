@@ -1,5 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
 import Error from './Error';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../redux/apiCalls';
+import { useState } from 'react';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -36,6 +38,7 @@ const Login = () => {
           >
             LOGIN
           </button>
+
           {error && <Error>Something went wrong...</Error>}
           <a href="" className="my-2 mx-0 font-xs  no-underline cursor-pointer">
             DO NOT YOU REMEMBER THE PASSWORD

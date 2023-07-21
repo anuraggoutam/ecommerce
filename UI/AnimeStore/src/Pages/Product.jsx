@@ -7,6 +7,9 @@ import Newsletter from '../Components/Newsletter';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { publicRequest } from '../requestMethods';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../redux/cartRedux';
+
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split('/')[2];
@@ -21,7 +24,9 @@ const Product = () => {
       try {
         const res = await publicRequest.get('/products/find/' + id);
         setProduct(res.data);
-      } catch {}
+      } catch (err) {
+        throw new Error(err);
+      }
     };
     getProduct();
   }, [id]);
@@ -87,7 +92,7 @@ const Product = () => {
             <div className="Amount  flex items-center font-bold">
               <AddIcon onClick={() => handleQuantity('inc')} />
             </div>
-            <button className="text-base border-2 border-solid border-teal-500 bg-white cursor-auto font-medium hover:bg-[#f8f4f4]">
+            <button className="text-base border-2 border-solid border-teal-500 bg-white cursor-auto font-medium hover:bg-[#f8f4f4]" onClick={handleClick}>
               ADD TO CART
             </button>
           </div>

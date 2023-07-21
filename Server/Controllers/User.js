@@ -7,9 +7,9 @@ const User = require('../models/User');
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { userName, email, password } = req.body;
+  const { username, email, password, name, lastname } = req.body;
 
-  if (!userName || !email || !password) {
+  if (!username || !email || !password || !name || !lastname) {
     res.status(400);
     throw new Error('Please add all fields');
   }
@@ -29,7 +29,9 @@ const registerUser = asyncHandler(async (req, res) => {
   // Create user
   const user = await User.create({
     name,
+    lastname,
     email,
+    username,
     password: hashedPassword,
   });
 
@@ -74,6 +76,13 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error('Invalid credentials');
   }
 });
+
+// Generate JWT
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: '30d',
+  });
+};
 
 module.exports = {
   registerUser,

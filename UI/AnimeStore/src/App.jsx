@@ -2,19 +2,17 @@ import Home from './Pages/Home';
 import ProductList from './Pages/ProductList';
 import Product from './Pages/Product';
 import Register from './Pages/Register';
-import Success from './Pages/Success';
 import Login from './Pages/Login';
 import Cart from './Pages/Cart';
 import Error from './Pages/Error';
-import {} from 'react-router-dom';
-
+import Success from './Pages/Success';
 import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
 } from 'react-router-dom';
 
-const user = true;
+const user = false;
 const router = createBrowserRouter([
   {
     path: '/',
