@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { publicRequest } from '../requestMethods';
 import { useDispatch } from 'react-redux';
-import { addProduct } from '../redux/cartRedux';
+import { addProduct } from '../redux/cartSlice';
 
 const Product = () => {
   const location = useLocation();
@@ -92,7 +92,10 @@ const Product = () => {
             <div className="Amount  flex items-center font-bold">
               <AddIcon onClick={() => handleQuantity('inc')} />
             </div>
-            <button className="text-base border-2 border-solid border-teal-500 bg-white cursor-auto font-medium hover:bg-[#f8f4f4]" onClick={handleClick}>
+            <button
+              className="text-base border-2 border-solid border-teal-500 bg-white cursor-auto font-medium hover:bg-[#f8f4f4]"
+              onClick={handleClick}
+            >
               ADD TO CART
             </button>
           </div>

@@ -34,13 +34,21 @@ const registerUser = asyncHandler(async (req, res) => {
     username,
     password: hashedPassword,
   });
+  const accessToken = jwt.sign(
+    {
+      id: user._id,
+      isAdmin: user.isAdmin,
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: '3d' }
+  );
 
   if (user) {
     res.status(201).json({
       _id: user.id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
+      token: accessToken,
     });
   } else {
     res.status(400);
@@ -52,11 +60,11 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users/login
 // @access  Public
 const loginUser = asyncHandler(async (req, res) => {
-  const { user_name, password } = req.body;
+  const { username, password } = req.body;
 
   // Check for user email
   const user = await User.findOne({
-    userName: req.body.user_name,
+    username: username,
   });
 
   if (user && (await bcrypt.compare(password, user.password))) {
@@ -65,7 +73,7 @@ const loginUser = asyncHandler(async (req, res) => {
         id: user._id,
         isAdmin: user.isAdmin,
       },
-      process.env.JWT_SEC,
+      process.env.JWT_SECRET,
       { expiresIn: '3d' }
     );
 
@@ -76,13 +84,6 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error('Invalid credentials');
   }
 });
-
-// Generate JWT
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: '30d',
-  });
-};
 
 module.exports = {
   registerUser,

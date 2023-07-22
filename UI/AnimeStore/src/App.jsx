@@ -12,7 +12,10 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-const user = false;
+
+const user = localStorage.getItem('user');
+
+
 const router = createBrowserRouter([
   {
     path: '/',

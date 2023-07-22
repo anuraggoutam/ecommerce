@@ -1,12 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-
 import { register } from '../redux/apiCalls';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [lastname, setLastName] = useState('');
@@ -20,7 +19,7 @@ const Register = () => {
       throw new Error('Password do not match');
     }
     register(dispatch, { username, password, email, name, lastname });
-    Navigate('/');
+    navigate('login');
   };
 
   return (
@@ -40,19 +39,19 @@ const Register = () => {
             className="flex-1 min-w-[40%] mt-5 mr-[10px] mb-0 ml-0 p-[10px]"
             onChange={(e) => setLastName(e.target.value)}
           />
-          <input
-            type="text"
-            placeholder="email"
-            className="flex-1 min-w-[40%] mt-5 mr-[10px] mb-0 ml-0 p-[10px]"
-            onChange={(e) => setEmail(e.target.value)}
-          />
+
           <input
             type="text"
             placeholder="username"
             className="flex-1 min-w-[40%] mt-5 mr-[10px] mb-0 ml-0 p-[10px]"
             onChange={(e) => setUserName(e.target.value)}
           />
-
+          <input
+            type="text"
+            placeholder="email"
+            className="flex-1 min-w-[40%] mt-5 mr-[10px] mb-0 ml-0 p-[10px]"
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <input
             type="password"
             placeholder="password"

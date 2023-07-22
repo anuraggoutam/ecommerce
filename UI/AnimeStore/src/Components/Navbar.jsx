@@ -23,8 +23,12 @@ const Navbar = () => {
           <h1 className="font-[800] smx:text-xl smx:ml-2">ANIMEVERSE</h1>
         </div>
         <div className="right flex justify-end  items-center  flex-1 -pr-12 smx:flex-[2] smx:justify-center">
-          <div className="text-sm cursor-pointer ml-5 smx:ml-3">REGISTER</div>
-          <div className="text-sm cursor-pointer ml-5 smx:ml-3">SIGN IN</div>
+          <div className="text-sm cursor-pointer ml-5 smx:ml-3">
+            <Link to="register">REGISTER</Link>
+          </div>
+          <div className="text-sm cursor-pointer ml-5 smx:ml-3">
+            <Link to="login">SIGN IN</Link>
+          </div>
           <Link to="/cart">
             <div className=" menu text-sm cursor-pointer ml-5 smx:text-xs smx:ml-3">
               <Badge badgeContent={quantity} color="primary">

@@ -2,12 +2,13 @@ import {
   loginUserRequest,
   loginUserSuccess,
   loginUserFailure,
-} from './userRedux';
+} from './userSlice';
 import {
   registerUserRequest,
   registerUserSuccess,
   registerUserFailure,
-} from '../redux/registerReducer';
+} from './userRegistrationSlice';
+
 import { publicRequest } from '../requestMethods';
 
 export const login = async (dispatch, user) => {

@@ -1,19 +1,9 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import cartReducer from './cartRedux';
-import userReducer from './userRedux';
-import registerReducer from './registerReducer';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { encryptData, decryptData } from '../middleware/encrypted';
+import rootReducer from './reducers';
+import thunk from 'redux-thunk';
 
 // Function to load initial state from secure storage
 const loadInitialState = () => {
@@ -31,35 +21,24 @@ const loadInitialState = () => {
 
 const persistConfig = {
   key: 'root',
-  version: 1,
   storage,
   transforms: [
     {
+      // Transform state during storage and retrieval
       in: (state) => encryptData(state),
       out: (encryptedState) => decryptData(encryptedState),
     },
   ],
 };
 
-const rootReducer = combineReducers({
-  user: userReducer,
-  cart: cartReducer,
-  userRegistration: registerReducer,
-});
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 const preloadedState = loadInitialState();
 
-export const store = configureStore({
+const store = configureStore({
   reducer: persistedReducer,
+  middleware: [...getDefaultMiddleware({ thunk })],
   preloadedState,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
 });
 
-export let persistor = persistStore(store);
+export const persistor = persistStore(store);
+export default store;
