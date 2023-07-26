@@ -8,6 +8,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import { useEffect, useState } from 'react';
 import { userRequest } from '../requestMethods';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // const KEY = process.env.REACT_APP_STRIPE;
 
@@ -34,7 +35,7 @@ const Cart = () => {
           },
         });
       } catch (err) {
-        throw new Error(err);
+        toast.error(err);
       }
     };
     stripeToken && makeRequest();
@@ -131,7 +132,7 @@ const Cart = () => {
               description={`Your total is $${cart.total}`}
               amount={cart.total * 100}
               token={onToken}
-              stripeKey={import.meta.env.REACT_APP_STRIPE}
+              stripeKey={import.meta.env.VITE_REACT_APP_STRIPE}
             >
               <button className="w-full p-2 bg-black text-white font-semibold">
                 CHECKOUT NOW

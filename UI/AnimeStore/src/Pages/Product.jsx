@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { publicRequest } from '../requestMethods';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/cartSlice';
+import { toast } from 'react-toastify';
 
 const Product = () => {
   const location = useLocation();
@@ -25,7 +26,7 @@ const Product = () => {
         const res = await publicRequest.get('/products/find/' + id);
         setProduct(res.data);
       } catch (err) {
-        throw new Error(err);
+        toast.error(err);
       }
     };
     getProduct();

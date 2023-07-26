@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { userRequest } from '../requestMethods';
+import { toast } from 'react-toastify';
 
 const Success = () => {
   const location = useLocation();
@@ -24,7 +25,7 @@ const Success = () => {
         });
         setOrderId(res.data._id);
       } catch (err) {
-        throw new Error(err);
+        toast.error(err);
       }
     };
     data && createOrder();

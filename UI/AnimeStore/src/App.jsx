@@ -6,15 +6,9 @@ import Login from './Pages/Login';
 import Cart from './Pages/Cart';
 import Error from './Pages/Error';
 import Success from './Pages/Success';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Navigate,
-} from 'react-router-dom';
-
-
-const user = localStorage.getItem('user');
-
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -40,11 +34,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: user ? <Navigate to="/" /> : <Login />,
+    element: <Login />,
   },
   {
     path: '/register',
-    element: user ? <Navigate to="/" /> : <Register />,
+    element: <Register />,
   },
 ]);
 
@@ -56,7 +50,11 @@ const router = createBrowserRouter([
 
 //usefetcher
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} /> <ToastContainer />
+    </>
+  );
 }
 
 export default App;

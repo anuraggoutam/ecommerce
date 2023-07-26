@@ -1,43 +1,34 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { encryptData, decryptData } from '../middleware/encrypted';
 import rootReducer from './reducers';
-import thunk from 'redux-thunk';
+import { encryptTransform } from 'redux-persist-transform-encrypt';
+
+const Key = import.meta.env.VITE_API_KEY;
+
+const encryptor = encryptTransform({
+  secretKey: Key,
+  onError: function (error) {
+    throw new Error(error.message);
+  },
+});
 
 // Function to load initial state from secure storage
-const loadInitialState = () => {
-  try {
-    const encryptedState = localStorage.getItem('reduxState');
-    if (encryptedState) {
-      return decryptData(encryptedState);
-    }
-    return undefined;
-  } catch (error) {
-    console.error('Error loading state from secure storage:', error);
-    return undefined;
-  }
-};
 
 const persistConfig = {
   key: 'root',
   storage,
-  transforms: [
-    {
-      // Transform state during storage and retrieval
-      in: (state) => encryptData(state),
-      out: (encryptedState) => decryptData(encryptedState),
-    },
-  ],
+  transforms: [encryptor],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-const preloadedState = loadInitialState();
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: [...getDefaultMiddleware({ thunk })],
-  preloadedState,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export const persistor = persistStore(store);
