@@ -3,10 +3,10 @@ import LanguageIcon from '@mui/icons-material/Language';
 import SettingsIcon from '@mui/icons-material/Settings';
 export default function Topbar() {
   return (
-    <div className="topbar h-[50px] w-full bg-white sticky t-0 z-[999]">
-      <div className="topbarWrapper h-full py-0 px-5 flex items-center justify-between">
+    <div className="topbar h-[40px] w-full bg-white sticky t-0 z-[999]">
+      <div className="topbarWrapper h-full py-0 px-5 flex items-center justify-between mt-2">
         <div className="topLeft">
-          <span className="logo font-medium text-[30px]  text-blue-900 cursor-pointer ">
+          <span className="logo font-semibold text-[30px]  text-blue-500 cursor-pointer ">
             Admin
           </span>
         </div>

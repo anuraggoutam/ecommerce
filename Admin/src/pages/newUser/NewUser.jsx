@@ -1,6 +1,6 @@
 export default function NewUser() {
   return (
-    <div className="newUser flex-[4]">
+    <div className="newUser flex-[10]">
       <h1 className="newUserTitle">New User</h1>
       <form className="newUserForm flex-wrap ">
         <div className="newUserItem w-[400px] flex flex-col mt-2 mr-5">

@@ -6,7 +6,7 @@ import WidgetLg from '../../components/widgetLg/WidgetLg';
 
 export default function Home() {
   return (
-    <div className="home flex-[4]">
+    <div className="home flex-[10]">
       <FeaturedInfo />
       <Chart
         data={userData}

@@ -1,6 +1,4 @@
-import './userList.css';
 import { DataGrid } from '@mui/x-data-grid';
-
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { userRows } from '../../dummyData';
 import { Link } from 'react-router-dom';
@@ -21,8 +19,12 @@ export default function UserList() {
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="userListUser">
-            <img className="userListImg" src={params.row.avatar} alt="" />
+          <div className="userListUser flex items-center">
+            <img
+              className="userListImg w-8 h-8 rounded-[50%] object-cover mr-3"
+              src={params.row.avatar}
+              alt=""
+            />
             {params.row.username}
           </div>
         );
@@ -47,10 +49,12 @@ export default function UserList() {
         return (
           <>
             <Link to={'/user/' + params.row.id}>
-              <button className="userListEdit">Edit</button>
+              <button className="userListEdit border-none rounded-xl py-1 px-2 bg-teal-500 text-white cursor-pointer mr-5">
+                Edit
+              </button>
             </Link>
             <DeleteOutlineIcon
-              className="userListDelete"
+              className="userListDelete text-red-500 cursor-pointer"
               onClick={() => handleDelete(params.row.id)}
             />
           </>
@@ -60,7 +64,7 @@ export default function UserList() {
   ];
 
   return (
-    <div className="userList">
+    <div className="userList flex-[10]">
       <DataGrid
         rows={data}
         disableSelectionOnClick

@@ -18,12 +18,12 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
-      <Route paths="users" element={<UserList />} />
-      <Route paths="user/:userid" element={<User />} />
-      <Route paths="newUser" element={<NewUser />} />
-      <Route paths="products" element={<ProductList />} />
-      <Route paths="products/:productid" element={<Product />} />
-      <Route paths="newProduct" element={<NewProduct />} />
+      <Route path="users" element={<UserList />} />
+      <Route path="user/:userid" element={<User />} />
+      <Route path="newUser" element={<NewUser />} />
+      <Route path="products" element={<ProductList />} />
+      <Route path="products/:productid" element={<Product />} />
+      <Route path="newProduct" element={<NewProduct />} />
     </Route>
   )
 );

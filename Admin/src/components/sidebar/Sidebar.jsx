@@ -15,30 +15,33 @@ import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
   return (
-    <div className="sidebar  flex-[1] h-[calc(100vh-50px)] bg-[rgb(251,251,255)] sticky top-[50px] ">
-      <div className="sidebarWrapper bg-gray-100  ">
+    <div
+      className="sidebar h-[calc(100vh-40px)] bg-[rgb(251,251,255)] sticky top-[50px] "
+      style={{ flex: 1 }}
+    >
+      <div className="sidebarWrapper bg-gray-100 p-5  ">
         <div className="sidebarMenu mb-3">
-          <h3 className="sidebarTitle text-xs text-cream ml-2 ">Dashboard</h3>
+          <h3 className="sidebarTitle text-xs text-cream  ">Dashboard</h3>
           <ul className="sidebarList list-none p-1">
             <Link to="/" className="link">
-              <li className="sidebarListItem active p-1 cursor-pointer flex items-center rounded-xl hover:bg-[rgb(240,240,255)]">
+              <li className="sidebarListItem active p-1 cursor-pointer flex items-center rounded-xl hover:bg-[rgb(156,156,240)]">
                 {/* if active then hover */}
                 <LineStyleIcon className="sidebarIcon mr-1 text-xl" />
                 Home
               </li>
             </Link>
-            <li className="sidebarListItem">
+            <li className="sidebarListItem p-1 cursor-pointer flex items-center rounded-xl">
               <TimelineIcon className="sidebarIcon mr-1 text-xl" />
               Analytics
             </li>
-            <li className="sidebarListItem">
+            <li className="sidebarListItem  p-1 cursor-pointer flex items-center rounded-xl">
               <TrendingUpIcon className="sidebarIcon mr-1 text-xl" />
               Sales
             </li>
           </ul>
         </div>
         <div className="sidebarMenu mb-3">
-          <h3 className="sidebarTitle text-xs text-cream ml-2">Quick Menu</h3>
+          <h3 className="sidebarTitle text-xs text-cream ">Quick Menu</h3>
           <ul className="sidebarList list-none p-1">
             <Link to="/users" className="link">
               <li className="sidebarListItem  p-1 cursor-pointer flex items-center rounded-xl ">
@@ -56,16 +59,14 @@ export default function Sidebar() {
               <AttachMoneyIcon className="sidebarIcon mr-1 text-xl" />
               Transactions
             </li>
-            <li className="sidebarListItem">
+            <li className="sidebarListItem  p-1 cursor-pointer flex items-center rounded-xl">
               <BarChartIcon className="sidebarIcon mr-1 text-xl" />
               Reports
             </li>
           </ul>
         </div>
         <div className="sidebarMenu mb-3">
-          <h3 className="sidebarTitle text-xs text-cream ml-2">
-            Notifications
-          </h3>
+          <h3 className="sidebarTitle text-xs text-cream ">Notifications</h3>
           <ul className="sidebarList list-none p-1">
             <li className="sidebarListItem  p-1 cursor-pointer flex items-center rounded-xl ">
               <MailOutlineIcon className="sidebarIcon mr-1 text-xl" />
@@ -82,7 +83,7 @@ export default function Sidebar() {
           </ul>
         </div>
         <div className="sidebarMenu mb-3">
-          <h3 className="sidebarTitle text-xs text-cream ml-2">Staff</h3>
+          <h3 className="sidebarTitle text-xs text-cream ">Staff</h3>
           <ul className="sidebarList list-none p-1">
             <li className="sidebarListItem  p-1 cursor-pointer flex items-center rounded-xl ">
               <WorkOutlineIcon className="sidebarIcon mr-1 text-xl" />

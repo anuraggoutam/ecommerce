@@ -8,9 +8,8 @@ const RootLayout = () => {
       <Topbar />
       <div className="Container flex mt-3 ">
         <Sidebar />
-        <main>
-          <Outlet />
-        </main>
+
+        <Outlet />
       </div>
     </>
   );

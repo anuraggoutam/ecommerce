@@ -2,7 +2,7 @@
 
 export default function NewProduct() {
   return (
-    <div className="newProduct flex-[4]">
+    <div className="newProduct flex-auto">
       <h1 className="addProductTitle ">New Product</h1>
       <form className="addProductForm mt-3">
         <div className="addProductItem flex w-[250px] flex-col mb-2">

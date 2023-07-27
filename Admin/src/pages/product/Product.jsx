@@ -5,7 +5,7 @@ import PublishIcon from '@mui/icons-material/Publish';
 
 export default function Product() {
   return (
-    <div className="product flex-[4] p-5">
+    <div className="product flex-auto p-5">
       <div className="productTitleContainer flex items-center justify-between">
         <h1 className="productTitle">Product</h1>
         <Link to="/newproduct">

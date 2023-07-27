@@ -7,11 +7,13 @@
 .widgetLg,
 .widgetSm,
 .productTopRight,
-.productBottom {
+.productBottom,
+.userShow,
+.userUpdate {
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
 
-//widgetLg
+//widgetLgs
 
 .link {
   text-decoration: none;
