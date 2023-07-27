@@ -1,4 +1,3 @@
-import './sidebar.css';
 import LineStyleIcon from '@mui/icons-material/LineStyle';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -14,12 +13,12 @@ import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
 import { Link } from 'react-router-dom';
 
-export default function Sidebar() { list-none p-1
+export default function Sidebar() {
   return (
-    <div className="sidebar flex-1 h-[calc(100vh-50px)] bg-[rgb(251,251,255)] sticky top-[50px] ">
-      <div className="sidebarWrapper bg-gray-500 ">
+    <div className="sidebar  flex-[1] h-[calc(100vh-50px)] bg-[rgb(251,251,255)] sticky top-[50px] ">
+      <div className="sidebarWrapper bg-gray-100  ">
         <div className="sidebarMenu mb-3">
-          <h3 className="sidebarTitle text-xs text-cream">Dashboard</h3>
+          <h3 className="sidebarTitle text-xs text-cream ml-2 ">Dashboard</h3>
           <ul className="sidebarList list-none p-1">
             <Link to="/" className="link">
               <li className="sidebarListItem active p-1 cursor-pointer flex items-center rounded-xl hover:bg-[rgb(240,240,255)]">
@@ -39,7 +38,7 @@ export default function Sidebar() { list-none p-1
           </ul>
         </div>
         <div className="sidebarMenu mb-3">
-          <h3 className="sidebarTitle text-xs text-cream">Quick Menu</h3>
+          <h3 className="sidebarTitle text-xs text-cream ml-2">Quick Menu</h3>
           <ul className="sidebarList list-none p-1">
             <Link to="/users" className="link">
               <li className="sidebarListItem  p-1 cursor-pointer flex items-center rounded-xl ">
@@ -64,7 +63,9 @@ export default function Sidebar() { list-none p-1
           </ul>
         </div>
         <div className="sidebarMenu mb-3">
-          <h3 className="sidebarTitle text-xs text-cream">Notifications</h3>
+          <h3 className="sidebarTitle text-xs text-cream ml-2">
+            Notifications
+          </h3>
           <ul className="sidebarList list-none p-1">
             <li className="sidebarListItem  p-1 cursor-pointer flex items-center rounded-xl ">
               <MailOutlineIcon className="sidebarIcon mr-1 text-xl" />
@@ -81,7 +82,7 @@ export default function Sidebar() { list-none p-1
           </ul>
         </div>
         <div className="sidebarMenu mb-3">
-          <h3 className="sidebarTitle text-xs text-cream">Staff</h3>
+          <h3 className="sidebarTitle text-xs text-cream ml-2">Staff</h3>
           <ul className="sidebarList list-none p-1">
             <li className="sidebarListItem  p-1 cursor-pointer flex items-center rounded-xl ">
               <WorkOutlineIcon className="sidebarIcon mr-1 text-xl" />

@@ -1,56 +1,35 @@
-import Home from '../src/pages/home/Home';
-import UserList from '../src/pages/userList/UserList';
-import User from '../src/pages/user/User';
-import NewUser from '../src/pages/newUser/NewUser';
-import Product from '../src/pages/product/Product';
-import ProductList from '../src/pages/productList/ProductList';
-import NewProduct from '../src/pages/newProduct/NewProduct';
-import Topbar from '../src/pages/topbar/Topbar';
-import Sidebar from '../src/pages/sidebar/Sidebar';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './pages/home/Home';
+import UserList from './pages/userList/UserList';
+import User from './pages/user/User';
+import NewUser from './pages/newUser/NewUser';
+import Product from './pages/product/Product';
+import ProductList from './pages/productList/ProductList';
+import NewProduct from './pages/newProduct/NewProduct';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-    index: true,
-  },
-  {
-    path: '/users',
-    element: <UserList />,
-  },
-  {
-    path: '/user/:userid',
-    element: <User />,
-  },
-  {
-    path: '/newUser',
-    element: <NewUser />,
-  },
-  {
-    path: '/products',
-    element: <ProductList />,
-  },
-  {
-    path: '/products/:productid',
-    element: <Product />,
-  },
-  {
-    path: '/newProduct',
-    element: <NewProduct />,
-  },
-]);
+import {
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+  Route,
+} from 'react-router-dom';
+import RootLayout from './Layouts/RootLayout';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Home />} />
+      <Route paths="users" element={<UserList />} />
+      <Route paths="user/:userid" element={<User />} />
+      <Route paths="newUser" element={<NewUser />} />
+      <Route paths="products" element={<ProductList />} />
+      <Route paths="products/:productid" element={<Product />} />
+      <Route paths="newProduct" element={<NewProduct />} />
+    </Route>
+  )
+);
 
 function App() {
-  return (
-    <>
-      <Topbar />
-      <div className="container">
-        <Sidebar />
-        <RouterProvider router={router} />
-      </div>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -5,11 +5,18 @@
 .chart,
 .featuredItem,
 .widgetLg,
-.widgetSm {
+.widgetSm,
+.productTopRight,
+.productBottom {
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
 
 //widgetLg
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
 
 .widgetLgButton {
   padding: 5px 7px;
