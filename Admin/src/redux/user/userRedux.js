@@ -5,7 +5,7 @@ const Rootuser = JSON.parse(localStorage.getItem('persist:root'))?.auth;
 const user = Rootuser && JSON.parse(Rootuser).user;
 
 const initialState = {
-  user: user ? user : null,
+  User: user ? user : null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -28,7 +28,6 @@ export const logout = createAsyncThunk('auth/logout', async () => {
   await authService.logout();
 });
 
-
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -48,16 +47,16 @@ const userSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
+        state.User = action.payload;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        state.user = null;
+        state.User = null;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.user = null;
+        state.User = null;
       });
   },
 });

@@ -1,4 +1,4 @@
-import { publicRequest, userRequest } from '../requestMethods';
+import { publicRequest, userRequest } from '../../requestMethods';
 
 const getProducts = async () => {
   const res = await publicRequest.get('/products');

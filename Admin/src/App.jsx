@@ -5,30 +5,55 @@ import NewUser from './pages/newUser/NewUser';
 import Product from './pages/product/Product';
 import ProductList from './pages/productList/ProductList';
 import NewProduct from './pages/newProduct/NewProduct';
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-  createRoutesFromElements,
-  Route,
-} from 'react-router-dom';
+import Login from './pages/login/Login';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './Layouts/RootLayout';
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<Home />} />
-      <Route path="users" element={<UserList />} />
-      <Route path="user/:userid" element={<User />} />
-      <Route path="newUser" element={<NewUser />} />
-      <Route path="products" element={<ProductList />} />
-      <Route path="products/:productid" element={<Product />} />
-      <Route path="newProduct" element={<NewProduct />} />
-    </Route>
-  )
-);
 
 function App() {
+  
+  const home = [{
+        path: '/',
+        element: <RootLayout />,
+        children: [
+          {
+            path: '/',
+            element: <Home />,
+          },
+          {
+            path: '/users',
+            element: <UserList />,
+          },
+          {
+            path: '/user/userid',
+            element: <User />,
+          },
+          {
+            path: '/newUser',
+            element: <NewUser />,
+          },
+          {
+            path: '/products',
+            element: <ProductList />,
+          },
+          {
+            path: '/products/:productsId',
+            element: <Product />,
+          },
+          {
+            path: '/newProduct',
+            element: <NewProduct />,
+          },
+        ],
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      }]
+    
+
+  const router = createBrowserRouter([home]);
+
   return <RouterProvider router={router} />;
 }
 

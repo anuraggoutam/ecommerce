@@ -54,7 +54,7 @@ export default function ProductList() {
               </button>
             </Link>
             <DeleteOutlineIcon
-              className="productListDelete bg-red-600 cursor-pointer"
+              className="productListDelete bg-red-600 cursor-pointer text-gray-200 rounded-md"
               onClick={() => handleDelete(params.row.id)}
             />
           </>

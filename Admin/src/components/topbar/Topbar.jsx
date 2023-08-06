@@ -6,7 +6,7 @@ export default function Topbar() {
     <div className="topbar h-[40px] w-full bg-white sticky t-0 z-[999]">
       <div className="topbarWrapper h-full py-0 px-5 flex items-center justify-between mt-2">
         <div className="topLeft">
-          <span className="logo font-semibold text-[30px]  text-blue-500 cursor-pointer ">
+          <span className="logo font-semibold text-[30px]  text-blue-600 cursor-pointer ">
             Admin
           </span>
         </div>
