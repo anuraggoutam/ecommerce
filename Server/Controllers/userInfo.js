@@ -1,4 +1,4 @@
-const User = require('../models/Cart');
+const User = require('../models/User.js');
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 

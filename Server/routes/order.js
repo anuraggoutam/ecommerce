@@ -1,7 +1,7 @@
 const {
-  verifyToken,
+  isAdmin,
+  isAuth,
   verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
 } = require('../middleware/verifyToken');
 const {
   creatOrder,
@@ -15,23 +15,23 @@ const router = require('express').Router();
 
 //CREATE
 
-router.post('/', verifyToken, creatOrder);
+router.post('/', isAuth, creatOrder);
 
 //UPDATE
-router.put('/:id', verifyTokenAndAdmin, updateOrder);
+router.put('/:id', isAuth, isAdmin, updateOrder);
 
 //DELETE
-router.delete('/:id', verifyTokenAndAdmin, deleteOrder);
+router.delete('/:id', isAuth, isAdmin, deleteOrder);
 
 //GET USER ORDERS
 router.get('/find/:userId', verifyTokenAndAuthorization, get);
 
 // //GET ALL
 
-router.get('/', verifyTokenAndAdmin, getAll);
+router.get('/', isAuth, isAdmin, getAll);
 
 // GET MONTHLY INCOME
 
-router.get('/income', verifyTokenAndAdmin, getMonthly);
+router.get('/income', isAuth, isAdmin, getMonthly);
 
 module.exports = router;

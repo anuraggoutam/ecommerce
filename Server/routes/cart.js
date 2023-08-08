@@ -1,7 +1,7 @@
 const {
-  verifyToken,
+  isAdmin,
+  isAuth,
   verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
 } = require('../middleware/verifyToken');
 const {
   createCart,
@@ -14,7 +14,7 @@ const router = require('express').Router();
 
 //CREATE
 
-router.post('/', verifyToken, createCart);
+router.post('/', isAuth, isAdmin, createCart);
 
 //UPDATE
 router.put('/:id', verifyTokenAndAuthorization, updateCart);
@@ -26,6 +26,6 @@ router.delete('/:id', verifyTokenAndAuthorization, deleteCart);
 router.get('/find/:userId', verifyTokenAndAuthorization, getCart);
 
 // //GET ALL
-router.get('/', verifyTokenAndAdmin, getAllCart);
+router.get('/', isAuth, isAdmin, getAllCart);
 
 module.exports = router;

@@ -6,9 +6,9 @@ const {
   getUserStats,
 } = require('../Controllers/userInfo');
 const {
-  verifyToken,
+  isAdmin,
+  isAuth,
   verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
 } = require('../middleware/verifyToken');
 
 const router = require('express').Router();
@@ -20,13 +20,13 @@ router.put('/:id', verifyTokenAndAuthorization, updateUser);
 router.delete('/:id', verifyTokenAndAuthorization, deleteUser);
 
 //GET USER
-router.get('/find/:id', verifyTokenAndAdmin, getUser);
+router.get('/find/:id', isAuth, isAdmin, getUser);
 
 //GET ALL USER
-router.get('/', verifyTokenAndAdmin, getAllUsers);
+router.get('/', isAuth, isAdmin, getAllUsers);
 
 //GET USER STATS
 
-router.get('/stats', verifyTokenAndAdmin, getUserStats);
+router.get('/stats', isAuth, isAdmin, getUserStats);
 
 module.exports = router;

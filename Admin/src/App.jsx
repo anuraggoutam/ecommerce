@@ -9,48 +9,45 @@ import Login from './pages/login/Login';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './Layouts/RootLayout';
 
-
 function App() {
-  
-  const home = [{
+  const home = {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      {
         path: '/',
-        element: <RootLayout />,
-        children: [
-          {
-            path: '/',
-            element: <Home />,
-          },
-          {
-            path: '/users',
-            element: <UserList />,
-          },
-          {
-            path: '/user/userid',
-            element: <User />,
-          },
-          {
-            path: '/newUser',
-            element: <NewUser />,
-          },
-          {
-            path: '/products',
-            element: <ProductList />,
-          },
-          {
-            path: '/products/:productsId',
-            element: <Product />,
-          },
-          {
-            path: '/newProduct',
-            element: <NewProduct />,
-          },
-        ],
+        element: <Home />,
+      },
+      {
+        path: '/users',
+        element: <UserList />,
+      },
+      {
+        path: '/user/userid',
+        element: <User />,
+      },
+      {
+        path: '/newUser',
+        element: <NewUser />,
+      },
+      {
+        path: '/products',
+        element: <ProductList />,
+      },
+      {
+        path: '/products/:productsId',
+        element: <Product />,
+      },
+      {
+        path: '/newProduct',
+        element: <NewProduct />,
       },
       {
         path: '/login',
         element: <Login />,
-      }]
-    
+      },
+    ],
+  };
 
   const router = createBrowserRouter([home]);
 

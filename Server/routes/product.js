@@ -6,22 +6,22 @@ const {
   getAllProducts,
 } = require('../Controllers/Product');
 const {
-  verifyToken,
+  isAuth,
+  isAdmin,
   verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
 } = require('../middleware/verifyToken');
 
 const router = require('express').Router();
 
 //CREATE
 
-router.post('/', verifyTokenAndAdmin, createProduct);
+router.post('/', isAuth, isAdmin, createProduct);
 
 //UPDATE
-router.put('/:id', verifyTokenAndAdmin, updateProduct);
+router.put('/:id', isAuth, isAdmin, updateProduct);
 
 //DELETE
-router.delete('/:id', verifyTokenAndAdmin, deleteProduct);
+router.delete('/:id', isAuth, isAdmin, deleteProduct);
 
 //GET PRODUCT
 router.get('/find/:id', getProduct);
