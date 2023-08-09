@@ -1,18 +1,23 @@
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { productRows } from '../../dummyData';
+import { getProducts, deleteProduct } from '../../redux/product/productRedux';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 export default function ProductList() {
-  const [data, setData] = useState(productRows);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.product.products);
+
+  useEffect(() => {
+    getProducts(dispatch);
+  }, [dispatch]);
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    deleteProduct(id, dispatch);
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
+    { field: '_id', headerName: 'ID', width: 90 },
     {
       field: 'product',
       headerName: 'Product',
@@ -25,17 +30,13 @@ export default function ProductList() {
               src={params.row.img}
               alt=""
             />
-            {params.row.name}
+            {params.row.title}
           </div>
         );
       },
     },
-    { field: 'stock', headerName: 'Stock', width: 200 },
-    {
-      field: 'status',
-      headerName: 'Status',
-      width: 120,
-    },
+    { field: 'Instock', headerName: 'Stock', width: 200 },
+
     {
       field: 'price',
       headerName: 'Price',
@@ -48,14 +49,14 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={'/product/' + params.row.id}>
+            <Link to={'/product/' + params.row._id}>
               <button className="productListEdit border-none rounded-xl py-1 px-2 bg-teal-500 text-white cursor-pointer mr-5">
                 Edit
               </button>
             </Link>
             <DeleteOutlineIcon
               className="productListDelete bg-red-600 cursor-pointer text-gray-200 rounded-md"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
@@ -66,9 +67,10 @@ export default function ProductList() {
   return (
     <div className="productList flex-[10]">
       <DataGrid
-        rows={data}
+        rows={products}
         disableSelectionOnClick
         columns={columns}
+        getRowId={(row) => row.id}
         pageSize={8}
         checkboxSelection
       />

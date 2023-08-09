@@ -1,4 +1,21 @@
+import { useEffect, useState } from 'react';
+import { userRequest } from '../../requestMethods';
+import './widgetLg.css';
+import { format } from 'timeago.js';
 export default function WidgetLg() {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const res = await userRequest.get('orders');
+        setOrders(res.data);
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    };
+    getOrders();
+  }, []);
   const Button = ({ type }) => {
     return <button className={'widgetLgButton ' + type}>{type}</button>;
   };
@@ -15,66 +32,20 @@ export default function WidgetLg() {
           <th className="widgetLgTh text-left">Amount</th>
           <th className="widgetLgTh text-left">Status</th>
         </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser flex items-center font-semibold">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg w-10 h-10 rounded-[50%] object-cover mr-2"
-            />
-            <span className="widgetLgName">Susan Carol</span>
-          </td>
-          <td className="widgetLgDate font-light">2 Jun 2021</td>
-          <td className=" font-light">$122.00</td>
-          <td className="widgetLgStatus">
-            <Button type="Approved" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser flex items-center font-semibold">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg w-10 h-10 rounded-[50%] object-cover mr-2"
-            />
-            <span className="widgetLgName">Susan Carol</span>
-          </td>
-          <td className="widgetLgDate font-light">2 Jun 2021</td>
-          <td className="widgetLgAmount font-light">$122.00</td>
-          <td className="widgetLgStatus">
-            <Button type="Declined" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser flex items-center font-semibold">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg w-10 h-10 rounded-[50%] object-cover mr-2"
-            />
-            <span className="widgetLgName">Susan Carol</span>
-          </td>
-          <td className="widgetLgDate font-light">2 Jun 2021</td>
-          <td className="widgetLgAmount font-light">$122.00</td>
-          <td className="widgetLgStatus">
-            <Button type="Pending" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser flex items-center font-semibold">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg w-10 h-10 rounded-[50%] object-cover mr-2"
-            />
-            <span className="widgetLgName">Susan Carol</span>
-          </td>
-          <td className="widgetLgDate font-light">2 Jun 2021</td>
-          <td className="widgetLgAmount font-light">$122.00</td>
-          <td className="widgetLgStatus">
-            <Button type="Approved" />
-          </td>
-        </tr>
+        {orders.map((order) => (
+          <tr className="widgetLgTr" key={order._id}>
+            <td className="widgetLgUser flex items-center font-semibold">
+              <span className="widgetLgName">{order.userId}</span>
+            </td>
+            <td className="widgetLgDate font-light">
+              {format(order.createdAt)}
+            </td>
+            <td className=" font-light">${order.amount}</td>
+            <td className="widgetLgStatus">
+              <Button type={order.status} />
+            </td>
+          </tr>
+        ))}
       </table>
     </div>
   );

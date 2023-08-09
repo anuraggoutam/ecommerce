@@ -27,7 +27,8 @@
     "redux-persist": "^6.0.0",
     "redux-persist-transform-encrypt": "^5.0.0",
     "redux-thunk": "^2.4.2",
-    "secure-web-storage": "^1.0.2"
+    "secure-web-storage": "^1.0.2",
+    "timeago.js": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

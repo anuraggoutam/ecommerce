@@ -3,7 +3,7 @@ import axios from 'axios';
 // Register user
 const register = async (userData) => {
   const response = await axios.post(
-    'http://localhost:5000/api/auth/register',
+    'http://localhost:4000/api/auth/register',
     userData
   );
 
@@ -13,7 +13,7 @@ const register = async (userData) => {
 // Login user
 const login = async (userData) => {
   const response = await axios.post(
-    'http://localhost:5000/api/auth/login',
+    'http://localhost:4000/api/auth/login',
     userData
   );
 
