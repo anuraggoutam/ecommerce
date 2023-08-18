@@ -1,18 +1,21 @@
-import axios from 'axios';
-import { BASE_URL } from '../../requestMethods';
-const login = async (userData) => {
-  const response = await axios.post(`${BASE_URL}auth/login`, userData);
-  localStorage.setItem('auth', JSON.stringify(response.data.accessToken));
-  return response.data;
-};
-const logout = () => {
-  localStorage.removeItem('persist:root');
-  localStorage.removeItem('auth');
-};
+import { loginFailure, loginStart, loginSuccess, logout } from './userRedux';
+import { publicRequest } from '../../requestMethods';
 
-const authService = {
-  login,
-  logout,
+export const login = async (dispatch, user) => {
+  dispatch(loginStart());
+  try {
+    const res = await publicRequest.post('/auth/login', user);
+    dispatch(loginSuccess(res.data));
+    localStorage.setItem('auth', JSON.stringify(res.data.accessToken));
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    dispatch(loginFailure(message));
+  }
 };
-
-export default authService;
+export const Logout = () => {
+  localStorage.removeItem('user');
+  logout();
+};

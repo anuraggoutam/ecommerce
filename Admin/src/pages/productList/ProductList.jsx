@@ -1,9 +1,12 @@
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { getProducts, deleteProduct } from '../../redux/product/productRedux';
+import {
+  getProducts,
+  deleteProduct,
+} from '../../redux/product/productServices';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 export default function ProductList() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
@@ -12,6 +15,7 @@ export default function ProductList() {
     getProducts(dispatch);
   }, [dispatch]);
 
+  
   const handleDelete = (id) => {
     deleteProduct(id, dispatch);
   };
@@ -70,7 +74,7 @@ export default function ProductList() {
         rows={products}
         disableSelectionOnClick
         columns={columns}
-        getRowId={(row) => row.id}
+        getRowId={(row) => row._id}
         pageSize={8}
         checkboxSelection
       />

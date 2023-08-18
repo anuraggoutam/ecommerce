@@ -10,46 +10,46 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './Layouts/RootLayout';
 
 function App() {
-  const home = {
-    path: '/',
-    element: <RootLayout />,
-    children: [
-      {
-        path: '/',
-        element: <Home />,
-      },
-      {
-        path: '/users',
-        element: <UserList />,
-      },
-      {
-        path: '/user/userid',
-        element: <User />,
-      },
-      {
-        path: '/newUser',
-        element: <NewUser />,
-      },
-      {
-        path: '/products',
-        element: <ProductList />,
-      },
-      {
-        path: '/products/:productsId',
-        element: <Product />,
-      },
-      {
-        path: '/newProduct',
-        element: <NewProduct />,
-      },
-      {
-        path: '/login',
-        element: <Login />,
-      },
-    ],
-  };
-
-  const router = createBrowserRouter([home]);
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <RootLayout />,
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/users',
+          element: <UserList />,
+        },
+        {
+          path: '/user/userid',
+          element: <User />,
+        },
+        {
+          path: '/newUser',
+          element: <NewUser />,
+        },
+        {
+          path: '/products',
+          element: <ProductList />,
+        },
+        {
+          path: '/product/:productsId',
+          element: <Product />,
+        },
+        {
+          path: '/newProduct',
+          element: <NewProduct />,
+        },
+      ],
+    },
+    {
+      path: 'login',
+      element: <Login />,
+    },
+  ]);
 
   return <RouterProvider router={router} />;
 }

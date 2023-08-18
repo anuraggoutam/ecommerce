@@ -2,11 +2,16 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useState, useEffect } from 'react';
 import { userRequest } from '../../requestMethods';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 export default function WidgetSm() {
   const [users, setUsers] = useState([]);
-
+  const { User, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.user
+  );
   useEffect(() => {
+    
+
     const getUsers = async () => {
       try {
         const res = await userRequest.get(`users/?new=true`);
@@ -27,7 +32,7 @@ export default function WidgetSm() {
         {users.map((user) => (
           <li
             className="widgetSmListItem flex items-center justify-between my-5 mx-0"
-            key={user.id}
+            key={user._id}
           >
             <img
               src={

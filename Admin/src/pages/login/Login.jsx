@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, reset } from '../../redux/user/userRedux';
+import { login } from '../../redux/user/userServices';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { reset } from '../../redux/user/userRedux';
 import Spinner from '../../components/spinner/Spinner';
 
 const Login = () => {
@@ -32,7 +33,7 @@ const Login = () => {
       username,
       password,
     };
-    dispatch(login(userData));
+    login(dispatch, userData);
   };
 
   if (isLoading) {
@@ -40,8 +41,8 @@ const Login = () => {
   }
 
   return (
-    <div className="Container flex-[8] -mt-[250px]  reg-img bg-cover flex items-center justify-center ">
-      <div className="wrapper w-2/5 p-5 bg-white  smx:w-3/4 rounded-xl border-2 border-gray-500 h-auto gap-5">
+    <div className="Container mt-[300px] flex items-center  reg-img bg-cover  justify-center ">
+      <div className="wrapper  p-5 bg-white  smx:w-3/4 rounded-xl border-2 border-gray-500 h-auto gap-5">
         <h1 className="text-2xl font-light">SIGN IN</h1>
         <form className="flex flex-col" onSubmit={onSubmit}>
           <input
